@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
+import Formulario from "./Formulario";
 
 // Jest
 
-test('quando o input está vazio, novos participantes não podem ser adicionados', ()) => {
+test('quando o input está vazio, novos participantes não podem ser adicionados', () => {
 
     render(<Formulario />)
 
@@ -19,4 +20,4 @@ test('quando o input está vazio, novos participantes não podem ser adicionados
     // garantir que o botão esteja desabilitado
     expect(botao).toBeDisabled()
 
-}
+})
