@@ -1,8 +1,10 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import Formulario from "./Formulario";
 import { RecoilRoot } from "recoil";
 
+describe('o comportamento do Formulário.tsx', () => {
+    
 test('quando o input está vazio, novos participantes não podem ser adicionados', () => {
     render(
         <RecoilRoot>
@@ -23,7 +25,7 @@ test('adicionar um participante caso exista um nome preenchido', () => {
         <RecoilRoot>
             <Formulario />
         </RecoilRoot>)
-        
+
     // encontrar no DOM o input
     const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
     // encontrar o botão
@@ -71,3 +73,36 @@ test('nomes duplicados não podem ser adicionados na lista', () => {
 
     expect(mensagemDeErro.textContent).toBe('Nomes duplicados não são permitidos!')
 })
+
+test('a mensagem de erro deve sumir após os timers', () => {
+    jest.useFakeTimers()
+    render(
+        <RecoilRoot>
+            <Formulario />
+        </RecoilRoot>)
+    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
+    const botao = screen.getByRole('button')
+    fireEvent.change(input, {
+        target: {
+            value: 'Ana Catarina'
+        }
+    })
+    fireEvent.click(botao)
+    fireEvent.change(input, {
+        target: {
+            value: 'Ana Catarina'
+        }
+    })
+    fireEvent.click(botao)
+    let mensagemDeErro = screen.queryByRole('alert')
+    expect(mensagemDeErro).toBeInTheDocument()
+
+    act(() => {
+        jest.runAllTimers()
+    });
+
+    mensagemDeErro = screen.queryByRole('alert')
+    expect(mensagemDeErro).toBeNull()
+})
+    })
+
