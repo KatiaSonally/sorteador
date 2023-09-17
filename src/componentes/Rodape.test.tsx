@@ -3,7 +3,6 @@ import React from "react";
 import { RecoilRoot } from "recoil";
 import Rodape from "./Rodape";
 import { useListaDeParticipantes } from "../state/hook/useListaDeParticipantes";
-import { useNavigate } from "react-router-dom";
 
 jest.mock('../state/hook/useListaDeParticipantes', () => {
     return {
