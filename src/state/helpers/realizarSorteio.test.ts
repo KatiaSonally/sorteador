@@ -7,9 +7,9 @@ describe('dado um sorteio de amigo secreto', () => {
         const participantes =  [
             'Ana',
             'Catarina',
+            'Vinícios',
             'Juliana',
             'João',
-            'Vinícios',
             'Nathália'            
         ]
 
