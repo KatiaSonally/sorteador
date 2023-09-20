@@ -3,6 +3,8 @@ Criação e implementação dos testes de uma aplicação de sorteio de amigos s
 
 Na primeira página inserimos os nomes dos participantes e na segunda página é feito o sorteio.
 
+![Alt text](Sorteador.gif)
+
 ## Objetivos
 
 * Aprender desenvolvimento orientado a testes - TDD
